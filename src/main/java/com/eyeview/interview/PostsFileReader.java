@@ -29,11 +29,8 @@ public class PostsFileReader {
     }
 
     public void readFile(){
-        BufferedReader reader = null;
-        InputStream in;
-        try{
-            in = getClass().getResourceAsStream("/"+this.fileName);
-            reader = new BufferedReader(new InputStreamReader(in));
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().
+                getResourceAsStream("/"+this.fileName)))){
             String line;
             int i = 0;
             int batchSize = this.randomBatchSize();
@@ -51,14 +48,7 @@ public class PostsFileReader {
                 fileProcessor.readLines(lines);
             }
         }catch (IOException e){
-            e.printStackTrace();
-            if (reader!=null){
-                try {
-                    reader.close();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
+            throw new RuntimeException(e);
         }
         Map<String, Integer> trends = fileProcessor.topHashtags(this.numOfHashtags);
         System.out.print(trends);
