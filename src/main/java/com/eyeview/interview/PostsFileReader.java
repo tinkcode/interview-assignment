@@ -1,8 +1,9 @@
 package com.eyeview.interview;
 
-import com.google.common.base.Function;
-
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,25 +17,15 @@ import java.util.Random;
  */
 public class PostsFileReader {
 
-    private Function<List<String>, Void> lineCallback;
-    private Function<Integer, Map<String, Integer>> doneCallback;
+    private FileProcessor fileProcessor;
     private String fileName;
-    private int topTrends;
+    private int numOfHashtags;
     private Random randomizer = new Random();
 
-    public PostsFileReader(String fileName, int topTrends) {
+    public PostsFileReader(String fileName, int numOfHashtags, FileProcessor fileProcessor) {
         this.fileName = fileName;
-        this.topTrends = topTrends;
-    }
-
-    public PostsFileReader forEachLine(Function<List<String>, Void> lineCallback){
-        this.lineCallback = lineCallback;
-        return this;
-    }
-
-    public PostsFileReader onDoneGetTrends(Function<Integer, Map<String, Integer>> onDoneCallback){
-        this.doneCallback = onDoneCallback;
-        return this;
+        this.numOfHashtags = numOfHashtags;
+        this.fileProcessor = fileProcessor;
     }
 
     public void readFile(){
@@ -50,14 +41,14 @@ public class PostsFileReader {
             while((line = reader.readLine()) != null){
                 lines.add(line);
                 if (i==batchSize){
-                    this.lineCallback.apply(lines);
+                    fileProcessor.readLines(lines);
                     lines.clear();
                     batchSize = this.randomBatchSize();
                 }
                 i++;
             }
             if (lines.size()>0){ //get last lines
-                this.lineCallback.apply(lines);
+                fileProcessor.readLines(lines);
             }
         }catch (IOException e){
             e.printStackTrace();
@@ -69,7 +60,7 @@ public class PostsFileReader {
                 }
             }
         }
-        Map<String, Integer> trends = this.doneCallback.apply(this.topTrends);
+        Map<String, Integer> trends = fileProcessor.topHashtags(this.numOfHashtags);
         System.out.print(trends);
     }
 
