@@ -2,7 +2,7 @@
 
 
 The goal of the assignment is to find the top trending hashtags in the file.
-Repeated hashtags by the same user id
+Repeated hashtags by the same user id should be counted once
 
 Please implement the following functions in `FileProcessor.java`:
 
