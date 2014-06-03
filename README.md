@@ -15,5 +15,5 @@ The goal of the assignment is to find the top x hashtags in an input file.
 ###### Assignment
 Please implement the following methods in `FileProcessor.java`:
 
-1. `readLines(List<String> lines)` (line 15). This method would be called with batches of 1-100 lines
-2. `Map<String, Integer> topHashtags(int numOfTop)` (line 20). This method would be called when reading the file has complete. It should return a map with top x hashtags. In each map entry the key would be the hashtag and the value is the number of occurences. The map does not need to be sorted
+1. `readLines(List<String> lines)` (line 15). This method would be called with batches of 1-100 lines while reading the file
+2. `Map<String, Integer> topHashtags(int numOfTop)` (line 20). This method would be called when reading the file is complete. The method should return a map with top x hashtags. In each map entry, the key should be the hashtag and the value should be the number of occurences. The map does not need to be sorted
