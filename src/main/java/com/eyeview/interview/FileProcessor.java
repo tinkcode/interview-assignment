@@ -39,7 +39,8 @@ public class FileProcessor {
         CommandLineParser parser = new BasicParser();
         Options options = new Options();
         options.addOption("f", "file", true, "file to process");
-        options.addOption("t", "top", true, "number of top trends to find");
+        options.addOption("t", "top", true, "number of top hashtags to find");
+
         try {
             CommandLine cmd = parser.parse( options, args);
             if (!cmd.hasOption("f") || !cmd.hasOption("t")){
