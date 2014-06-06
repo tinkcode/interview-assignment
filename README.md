@@ -29,3 +29,12 @@ If the input files contains the following lines:
 1635676669,1402100808,heading to the #gym
 ```
 Calling `FileProcessor.topHashtags(2)` should return `{'#gym':2, '#leader':2}`
+
+###### Submission
+1. If you don't have a github account, please create an account here: [github](https://github.com/)
+2. Fork this repository by clicking the Fork button on the top right corner
+3. Clone your repository by executing: `git clone https://github.com/{your_account}/interview-assignment.git` from command line
+4. Once complete commit your changes and push to your repository by executing:
+  1. `git commit -am 'assignment complete'`
+  2. `git push`
+5. Create a pull request by clicking 'New pull requests' in this repository's [pull requests](https://github.com/fullstackio/FlappySwift/pulls)
