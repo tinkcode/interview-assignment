@@ -2,7 +2,6 @@ package com.eyeview.interview;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,7 @@ public class PostsFileReader {
 
     public void readFile(){
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().
-                getResourceAsStream("/"+this.fileName)))){
+                getResourceAsStream("/" + this.fileName)))){
             String line;
             int i = 0;
             int batchSize = this.randomBatchSize();
@@ -41,6 +40,7 @@ public class PostsFileReader {
                     fileProcessor.readLines(lines);
                     lines.clear();
                     batchSize = this.randomBatchSize();
+                    i=0;
                 }
                 i++;
             }
@@ -55,6 +55,16 @@ public class PostsFileReader {
     }
 
     private int randomBatchSize(){
-        return randomizer.nextInt((100 - 1) + 1) + 1;
+        double selector = Math.random();
+        int max;
+        int min;
+        if(selector <= 0.2){ // p(0.2)
+            min = 1;
+            max = 100;
+        }else{ // p(0.8)
+            min = 800;
+            max = 1000;
+        }
+        return randomizer.nextInt((max - min) + 1) + min;
     }
 }
