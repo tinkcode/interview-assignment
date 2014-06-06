@@ -9,7 +9,10 @@ The goal of the assignment is to find the top x hashtags in an input file.
 * Each line in the file will contain 3 fields, delimited with commas: user_id, timestamp, post_text
 * Some posts will contain hashtags (e.g. `#eyeview`)
 * Repeated hashtags by the same user id should be counted once
+* Hashtags should be case insensitive
+* Blank hashtags (# without a word) should not be counted
 * Some lines may be blank or have bad input 
+* Text may contain non-ascii characters
 * Bonus points for unit tests
 
 ###### Assignment
