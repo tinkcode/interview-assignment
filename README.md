@@ -37,4 +37,4 @@ Calling `FileProcessor.topHashtags(2)` should return `{'#gym':2, '#leader':2}`
 4. Once complete commit your changes and push to your repository by executing:
   1. `git commit -am 'assignment complete'`
   2. `git push`
-5. Create a pull request by clicking 'New pull requests' in this repository's [pull requests](https://github.com/fullstackio/FlappySwift/pulls)
+5. Create a pull request by clicking 'New pull requests' in this repository's [pull requests](https://github.com/eyeview/interview-assignment/pulls)
