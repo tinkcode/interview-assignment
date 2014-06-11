@@ -22,20 +22,20 @@ Please implement the following methods in `FileProcessor.java`:
 2. `Map<String, Integer> topHashtags(int numOfTop)` (line 20). This method would be called when reading the file is complete. The method should return a map with top x hashtags. In each map entry, the key should be the hashtag and the value should be the number of occurences. The map does not need to be sorted
 
 ###### Examples
-* Example 1
+*Example 1*
 
-  If the input files contains the following lines:
+If the input files contains the following lines:
 ```
 2433743148,1402100808,The #Gym #Leader is Byron
 2288752253,1402100808,RT @AustinMahone please follow me I'm the #leader! #austin
 1635676669,1402100808,heading to the #gym
 ```
-  Calling `FileProcessor.topHashtags(2)` should return `{"#gym":2, "#leader":2}`
+Calling `FileProcessor.topHashtags(2)` should return `{"#gym":2, "#leader":2}`
 
-* Example 2
+*Example 2*
 
-  Check the provided sample file: ([sample.txt](src/main/resources/sample.txt))
-  Calling `FileProcessor.topHashtags(2)` with the provided sample file should return `{"#woops":2, "#notawake":2}`
+Check the provided sample file: ([sample.txt](src/main/resources/sample.txt))
+Calling `FileProcessor.topHashtags(2)` with the provided sample file should return `{"#woops":2, "#notawake":2}`
 
 ###### Submission
 1. If you don't have a github account, please create an account here: [github](https://github.com/)
