@@ -23,7 +23,8 @@ Please implement the following methods in `FileProcessor.java`:
 
 ###### Examples
 Example 1
----
+___
+
 If the input files contains the following lines:
 ```
 2433743148,1402100808,The #Gym #Leader is Byron
@@ -33,7 +34,8 @@ If the input files contains the following lines:
 Calling `FileProcessor.topHashtags(2)` should return `{"#gym":2, "#leader":2}`
 
 Example 2
----
+___
+
 If using the provided sample file ([Sample file](src/main/resources/sample.txt)), calling `FileProcessor.topHashtags(2)` should return `{"#woops":2, "#notawake":2}`
 
 ###### Submission
