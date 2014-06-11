@@ -12,13 +12,27 @@ import java.util.Map;
  */
 public class FileProcessor {
 
+    /**
+     * Called with a batch of lines (between 1-1000 lines in each batch)
+     *
+     * @param  lines a {@link java.util.List} of lines from the file
+     *
+     */
+
     public void readLines(List<String> lines){
-        //Gets a batch of lines (between 1-100)
+        // **** IMPLEMENT THIS METHOD ***/
         System.out.printf("Got %d lines\n", lines.size());
     }
 
+    /**
+     * Returns a map of top x hashtags
+     *
+     * @param  numOfTop   the number of top hashtags to find
+     *
+     * @return a {@link java.util.Map} of top x hashtags, each key is an hashtag and its value is the number of occurrences
+     */
     public Map<String, Integer> topHashtags(int numOfTop){
-        //Called after the file has been read
+        // **** IMPLEMENT THIS METHOD ***/
         return new HashMap<String, Integer>();
     }
 

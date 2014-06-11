@@ -21,12 +21,22 @@ public class PostsFileReader {
     private int numOfHashtags;
     private Random randomizer = new Random();
 
+    /**
+     * Initialized the file reader
+     * @param fileName the file to be read
+     * @param numOfHashtags number of top hashtags to find
+     * @param fileProcessor a processor to read lines and extract hashtags
+     */
     public PostsFileReader(String fileName, int numOfHashtags, FileProcessor fileProcessor) {
         this.fileName = fileName;
         this.numOfHashtags = numOfHashtags;
         this.fileProcessor = fileProcessor;
     }
 
+    /**
+     * Reads the input file and calls {@link FileProcessor#readLines(java.util.List)} while reading
+     * lines and {@link FileProcessor#topHashtags(int)} when reading is complete
+     */
     public void readFile(){
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().
                 getResourceAsStream("/" + this.fileName)))){
@@ -50,10 +60,14 @@ public class PostsFileReader {
         }catch (IOException e){
             throw new RuntimeException(e);
         }
-        Map<String, Integer> trends = fileProcessor.topHashtags(this.numOfHashtags);
-        System.out.print(trends);
+        Map<String, Integer> hashtags = fileProcessor.topHashtags(this.numOfHashtags);
+        System.out.print(hashtags);
     }
 
+    /**
+     *
+     * @return a random int between 1-1000 with probability of 0.2 to be between 1-100 and 0.8 between 800-1000
+     */
     private int randomBatchSize(){
         double selector = Math.random();
         int max;
