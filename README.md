@@ -6,7 +6,7 @@ The goal of the assignment is to find the top x hashtags in an input file.
 ###### Requirements
 * The program will be provided with two parameters, a file name and a number of top hashtags to find. The parameters can be passed into the program as command line arguments e.g. `java com.eyeview.interview.TopHashtags sample.txt 10`
 * The input file can be large (i.e. does not fit in memory)
-* Each line in the file will contain 3 fields, delimited with commas: user_id, timestamp, post_text
+* Each line in the file will contain 3 fields, delimited with commas: timestamp, user_id, post_text
 * Some posts will contain hashtags (e.g. `#eyeview`)
 * Repeated hashtags by the same user id should be counted once
 * Hashtags should be case insensitive
