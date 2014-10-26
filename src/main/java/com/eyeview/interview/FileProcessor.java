@@ -1,5 +1,6 @@
 package com.eyeview.interview;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -27,21 +28,21 @@ public class FileProcessor {
     private Map<String, Set<String>> tagUserMap = new HashMap<>();
     private Map<String, Integer> numHashTags;
     
-    public void readLines(final List<String> lines){
+    public void readLines(final List<String> lines) throws UnsupportedEncodingException{
         System.out.printf("Got %d lines\n", lines.size());
         for (String line : lines) {
         	if (!line.contains("#")) {continue;}
             String[] entities = line.split(",");
             if (entities.length < 3) {continue;}
             String userId = entities[1];
-            String text = Jsoup.parse(Jsoup.parse(entities[2]).text()).text();
             
-            String[] tags = text.toLowerCase().split(" ");
+            String[] tags = formatText(entities[2]).split(" ");
             
             Set<String> users = new HashSet<>();
             
             for (String tag : tags) {
             	if (!tag.startsWith("#")) {continue;}
+            	if (tag.length() == 1 ) {continue;}
             	if (tagUserMap.containsKey(tag)) {
             	    users = tagUserMap.get(tag);
             	}
@@ -49,6 +50,12 @@ public class FileProcessor {
             	tagUserMap.put(tag, users);
             }
         }
+    }
+    
+    private String formatText(final String input) throws UnsupportedEncodingException {
+    	String text = Jsoup.parse(Jsoup.parse(input).text()).text();
+        String cleanText = new String(text.getBytes("ASCII"));
+    	return cleanText.toLowerCase().replaceAll("[!;:\\/\\\\.\\*\\}\\{?\\'\",-_+=()%\\$\\^]", " ");
     }
     
     private class Size implements Comparable<Size> {
