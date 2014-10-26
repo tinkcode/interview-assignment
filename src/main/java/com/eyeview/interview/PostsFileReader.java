@@ -38,8 +38,9 @@ public class PostsFileReader {
      * lines and {@link FileProcessor#topHashtags(int)} when reading is complete
      */
     public void readFile(){
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().
-                getResourceAsStream("/" + this.fileName)))){
+        BufferedReader reader = new BufferedReader(new InputStreamReader(getClass().
+                getResourceAsStream("/" + this.fileName)));
+        try {
             String line;
             int i = 0;
             int batchSize = this.randomBatchSize();
@@ -57,9 +58,11 @@ public class PostsFileReader {
             if (lines.size()>0){ //get last lines
                 fileProcessor.readLines(lines);
             }
+            reader.close();
         }catch (IOException e){
             throw new RuntimeException(e);
         }
+        
         Map<String, Integer> hashtags = fileProcessor.topHashtags(this.numOfHashtags);
         System.out.print(hashtags);
     }
